@@ -1,4 +1,13 @@
 {
-  "rewrites": [],
+  "rewrites": [
+    {
+      "source": "/weather-app/:path*",
+      "destination": "/weather-app"
+    },
+    {
+      "source": "/mini-store/:path*",
+      "destination": "/mini-store"
+    }
+  ],
   "env": []
 }
