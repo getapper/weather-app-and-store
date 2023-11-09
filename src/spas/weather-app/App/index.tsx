@@ -3,6 +3,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { AppSnackbar } from "@/components/AppSnackbar";
 import useAppHooks from "./index.hooks";
+import { WeatherAppHomepage } from "@/spas/weather-app/scenes";
 
 const App: React.FC = () => {
   const { theme, open, type, message, handleClose } = useAppHooks();
@@ -12,7 +13,7 @@ const App: React.FC = () => {
       <CssBaseline />
       <BrowserRouter basename="/weather-app">
         <Routes>
-          <Route path="/" element={<span>TEST</span>} />
+          <Route path="/" element={<WeatherAppHomepage />} />
         </Routes>
       </BrowserRouter>
       <AppSnackbar
