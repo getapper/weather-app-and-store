@@ -7,6 +7,7 @@ import {
   CheckoutPage,
   ProductDetailsPage,
   StoreHomepage,
+  TransactionResult,
 } from "@/spas/mini-store/scenes";
 
 const App: React.FC = () => {
@@ -20,6 +21,7 @@ const App: React.FC = () => {
           <Route path="/" element={<StoreHomepage />} />
           <Route path="/product-details/:id" element={<ProductDetailsPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/transaction-result" element={<TransactionResult />} />
         </Routes>
       </BrowserRouter>
       <AppSnackbar
