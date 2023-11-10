@@ -3,7 +3,11 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { AppSnackbar } from "@/components/AppSnackbar";
 import useAppHooks from "./index.hooks";
-import { StoreHomepage } from "@/spas/mini-store/scenes";
+import {
+  CheckoutPage,
+  ProductDetailsPage,
+  StoreHomepage,
+} from "@/spas/mini-store/scenes";
 
 const App: React.FC = () => {
   const { theme, open, type, message, handleClose } = useAppHooks();
@@ -14,6 +18,8 @@ const App: React.FC = () => {
       <BrowserRouter basename="/mini-store">
         <Routes>
           <Route path="/" element={<StoreHomepage />} />
+          <Route path="/product-details/:id" element={<ProductDetailsPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
       </BrowserRouter>
       <AppSnackbar
