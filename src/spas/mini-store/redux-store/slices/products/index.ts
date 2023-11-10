@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as selectors from "./products.selectors";
-import { Product, ProductsState } from "./products.interfaces";
+import { Order, Product, ProductsState } from "./products.interfaces";
 
 const initialState: ProductsState = {
   list: [],
   cart: [],
+  orders: [],
 };
 
 export const productsStore = createSlice({
@@ -24,10 +25,10 @@ export const productsStore = createSlice({
           ...updatedCart[cartProductIndex],
           qty: updatedCart[cartProductIndex].qty + 1,
         };
-        state.cart = updatedCart;
       } else {
         updatedCart.push({ ...action.payload, qty: 1 });
       }
+      state.cart = updatedCart;
     },
     removeFromCart: (state, action: { payload: number }) => {
       const updatedCart = [...state.cart];
@@ -43,6 +44,18 @@ export const productsStore = createSlice({
         };
         state.cart = updatedCart;
       }
+    },
+    addOrder: (state, action: { payload: Order }) => {
+      const updatedOrders = state.orders ? state.orders : [];
+      const updatedList = state.list;
+      updatedOrders.push(action.payload);
+      state.orders = updatedOrders;
+      action.payload.products.forEach((prod) => {
+        const prodIndex = updatedList.findIndex((el) => el.id === prod.id);
+        updatedList[prodIndex].qty -= prod.qty;
+      });
+      state.list = updatedList;
+      state.cart = [];
     },
   },
 });
