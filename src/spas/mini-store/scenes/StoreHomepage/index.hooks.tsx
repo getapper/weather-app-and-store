@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { actions, selectors } from "@/spas/mini-store/redux-store";
-import tShirtWhite from "@/assets/t-shirt-bianco.jpg";
-import tShirtBlue from "@/assets/t-shirt-bianco.jpg";
-import tShirtWhiteArchive from "@/assets/t-shirt-bianco.jpg";
-import tShirtBlackArchive from "@/assets/t-shirt-bianco.jpg";
+import tShirtWhite from "../../../../assets/t-shirt-bianco.jpg";
+import tShirtBlue from "../../../../assets/t-shirt-blue.jpg";
+import tShirtWhiteArchive from "../../../../assets/t-shirt-fay-archive-bianco.jpg";
+import tShirtBlackArchive from "../../../../assets/t-shirt-fay-archive-nero.jpg";
 import { useEffect } from "react";
 import { Product } from "@/spas/mini-store/redux-store/slices/products/products.interfaces";
 
@@ -40,10 +40,16 @@ const fakeData: Product[] = [
 
 export const useStoreHomepage = () => {
   const dispatch = useDispatch();
+  const productList = useSelector(selectors.getProductList);
+  const cartList = useSelector(selectors.getProductCart);
+
+  const cartItemsNumber = cartList
+    .map((el) => el.qty)
+    .reduce((acc, curr) => acc + curr, 0);
 
   useEffect(() => {
     dispatch(actions.loadProducts(fakeData));
-  }, [dispatch]);
+  }, [dispatch, fakeData]);
 
-  return {};
+  return { productList, cartItemsNumber };
 };
