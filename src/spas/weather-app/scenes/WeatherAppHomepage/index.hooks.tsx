@@ -61,14 +61,11 @@ export const useWeatherAppHomepage = (weather: Weather, getData: Function) => {
 
   for (let i = 0; i < hourly.len; i++) {
     const data = getData(hourly.weatherCode[i], 45);
-    const date = new Date(hourly.time[i])
-      .toLocaleDateString("it-IT", {
-        weekday: "short",
-      })
-      .toUpperCase();
+    const date = new Date(hourly.time[i]);
+    const hour = `${date.getHours()}:00`;
     const comp = (
       <Box key={daily.len + i}>
-        <Typography>{date}</Typography>
+        <Typography fontSize={15}>{hour}</Typography>
         <Box
           display="flex"
           flexDirection="column"
@@ -89,7 +86,6 @@ export const useWeatherAppHomepage = (weather: Weather, getData: Function) => {
             justifyContent="space-around"
             width="90%"
             py={1}
-            // mt={data.type !== "Parzialmente nuvoloso"}
           >
             <Box>
               <Typography fontSize={12}>Temp</Typography>
