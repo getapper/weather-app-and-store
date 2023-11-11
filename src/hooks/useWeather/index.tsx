@@ -49,7 +49,7 @@ const getDataFromCode = (code: number, width?: number) => {
       return { type: "Nuvoloso", image: getImage(overcast, "Nuvoloso", width) };
     case 53:
       return {
-        type: "Pioggerella leggera",
+        type: "Pioggerella",
         image: getImage(rainy, "Pioggia", width),
       };
     case 61:
