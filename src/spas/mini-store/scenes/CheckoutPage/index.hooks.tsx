@@ -39,7 +39,7 @@ export const useCheckoutPage = () => {
       billingAddress.length === 0 ||
       isLoading === true
     );
-  }, [name, shippingAddress, paymentMethod, billingAddress]);
+  }, [name, shippingAddress, paymentMethod, billingAddress, isLoading]);
 
   const changeNameHandler = useCallback((e) => {
     setName(e.target.value);
@@ -86,6 +86,8 @@ export const useCheckoutPage = () => {
     billingAddress,
     shippingAddress,
     cartList,
+    navigate,
+    ordersLen,
   ]);
 
   return {

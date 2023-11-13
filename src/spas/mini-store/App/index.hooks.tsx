@@ -71,7 +71,7 @@ const useAppHooks = () => {
 
   useEffect(() => {
     dispatch(actions.loadProducts(fakeData));
-  }, [dispatch, fakeData]);
+  }, [dispatch]);
 
   const handleClose = useCallback(() => {
     dispatch(actions.closeFeedback());

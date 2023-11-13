@@ -18,7 +18,9 @@ export const TransactionResult = memo(({}: TransactionResultProps) => {
         <Typography variant={"h3"}>
           La tua transazione è andata a buon fine, {order.fullName}
         </Typography>
-        <Typography variant="h6">Ecco a te un riepilogo dell'ordine</Typography>
+        <Typography variant="h6">
+          Ecco a te un riepilogo dell&apos;ordine
+        </Typography>
         <Grid container color="#0f1a24" py={10}>
           <Grid
             item
@@ -31,7 +33,11 @@ export const TransactionResult = memo(({}: TransactionResultProps) => {
             }}
           >
             {order.products.map((prod) => (
-              <CheckoutItem product={prod} cartInteractions={false} />
+              <CheckoutItem
+                key={prod.id}
+                product={prod}
+                cartInteractions={false}
+              />
             ))}
           </Grid>
           <Grid

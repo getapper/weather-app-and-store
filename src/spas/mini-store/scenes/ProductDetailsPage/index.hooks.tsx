@@ -18,7 +18,7 @@ export const useProductDetailsPage = () => {
   const addToCartHandler = useCallback(() => {
     dispatch(actions.addToCart(product));
     console.log(cartList);
-  }, [dispatch, product]);
+  }, [dispatch, product, cartList]);
 
   return { product, addToCartHandler, cartItemQty };
 };

@@ -14,11 +14,11 @@ export const useCheckoutItem = (product: Product) => {
 
   const addToCartHandler = useCallback(() => {
     dispatch(actions.addToCart(product));
-  }, [product]);
+  }, [product, dispatch]);
 
   const removeFromCartHandler = useCallback(() => {
     dispatch(actions.removeFromCart(product.id));
-  }, [product]);
+  }, [product, dispatch]);
 
   return { addToCartHandler, removeFromCartHandler, cartItem, listItem };
 };
